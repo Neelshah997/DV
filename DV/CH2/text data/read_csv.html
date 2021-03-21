@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title> Read Data from Text Files</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
+    </head>
+    <body>
+        <h1>   Pull Data from csv Files</h1>
+        <div class="result"></div>
+        <div><p id="fileData"> </p></div>
+    </body>
+    <script>
+        $(document).ready(function(){
+            $.get('csvsample.txt',function(theData){
+                var data = $.csv.toObjects(theData);
+                var theHtml = createTable(data); 
+                $('#fileData').html(theHtml);
+            });
+        });
+        function createTable(data){
+            var html = "";
+            if(data[0].constructor === Object){
+                html += '<tr>\r\n';
+                for(var item in data[0]){
+                    html += '<th>'+ item+'</th>\r\n';
+                }
+                html += '</tr>\r\n'
+                for(var row in data){
+                    html+='<tr>\r\n';
+                    for(var item in data[row]){
+                        html+='<td>'+data[row][item] + '</td>\r\n';
+                    }
+                    html += '</tr>\r\n';
+                }
+            }
+            return html;
+        }
+    </script>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title> Read Data from Json Files</title>
+    </head>
+    <body>
+        <h1>    Data from Json Files</h1>
+        <script>
+            var jsonObj = { "sales": [ 
+                {"region": "Northeast", "employees":150, "amount":"115,000"}, 
+                {"region": "Southeast", "employees":125, "amount":"95,000"}, 
+                {"region": "West", "employees":325, "amount":"265,000"}
+                ] 
+                };
+
+                var theAmount = jsonObj.sales[2].amount;
+                var theRegion = jsonObj.sales[2].region;
+                var theEmployee = jsonObj.sales[2].region;
+
+                document.write("The region is "+theRegion+"<br/>\r\n");
+                document.write("The amount is "+theAmount+"<br/>\r\n"); 
+                document.write("The employees are "+theEmployee+"<br/>\r\n"); 
+        </script>
+    </body>
+</html>

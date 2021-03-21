@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>jQuery Table row column highlight on hover</title>
+            <style>
+                body{width: 610px;}
+                .current-row{background-color: #B24926; color: #FFF;}
+                .current-col{background-color: #1b1b1b;color: #FFF;}
+                .tutorial-table{width: 100%;font-size:0.9em;border-top: #e5e5e5 1px solid;
+                    border-spacing: initial;margin:20px 0; word-break: break-word;table-layout: fixed;}
+                .tutorial-tableth.table-header{background-color: #f5f5f5;padding: 5px;text-align: left;
+                    padding: 10px;}
+                .tutorial-table.table-row td{padding: 10px;}    
+            </style>
+            <script src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+            <script src = "http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $(',table-row').hover(function(){
+                        $(this).addClass('current-row');
+                    },function(){
+                        $(this).removeClass('current-row');
+                    });
+                    $("th").hover(function(){
+                        var index = $(this).index();
+                        $("th.table-header,td").filter(":nth-child("+(index+1)+")").addClass("current-col");
+                        $("th.table-header").filter(":nth-child("+(index+1)+")").css("backgroundcolor","9999") 
+                    },function(){
+                        var index = $(this).index();
+                        $("th.table-header,td").filter(":nth-child("+(index+1)+")").removeClass("current-col");
+                        $("th.table-header").filter(":nth-child("+(index+1)+")").css("backgroundcolor","#F5F5F5") 
+                        
+                    });
+                });
+            </script>
+        </head>
+        <body>
+            <table>
+                <caption>Sales By Region</caption>
+                <thead>
+                    <tr>
+                        <th >Region</th> 
+                        <th >Sales</th>
+                        <th >Mean</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Sum</th>
+                        <td>$1,000,000</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <th >Northeast</th>
+                        <td>$100,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>Southeast</th>
+                        <td>$75,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>Midwest</th>
+                        <td>$125,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>Mid-Atlantic</th>
+                        <td>$125,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>Southwest</th>
+                        <td>$75,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>Northwest</th>
+                        <td>$100,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                    <tr>
+                        <th>California</th>
+                        <td>$400,000</td>
+                        <td>$142,857</td>
+                    </tr>
+                </tbody>
+                    
+            </table>
+            </body>
+</html>
